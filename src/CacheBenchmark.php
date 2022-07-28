@@ -14,6 +14,7 @@ class CacheBenchmark
         $results = [];
         $duration = 0;
 
+        $driver->flush();
         foreach(['testSet', 'testGet', 'testTransaction'] as $test) {
             $time = -microtime(true);
             self::{$test}($driver);
@@ -75,19 +76,18 @@ class CacheBenchmark
 
     public static function testTransaction(Driver $driver)
     {
-        $driver->flush();
         $driver->beginTransaction();
         $success = false;
-        for($i = 0; $i < 10000; $i++) {
+        for($i = 1; $i <= 100000; $i++) {
             if($i % 2 === 0) {
                 // retrieve 1 on 2, retrieve 3 on 4
-                $value = $driver->get('key-'. ($i - 1)) !== __FILE__ . ($i - 1);
+                $value = $driver->get('tkey-'. ($i - 1)) !== __FILE__ . ($i - 1);
                 if (!$value) {
                     $success = false;
                 }
             } else {
                 // set on 1, set on 3, ...
-                $driver->set('key-'. $i,  __FILE__ . $i);
+                $driver->set('tkey-'. $i,  __FILE__ . $i);
             }
 
         }
