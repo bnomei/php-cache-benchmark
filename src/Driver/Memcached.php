@@ -8,10 +8,10 @@ class Memcached implements Driver {
 
     public function __construct(array $options = [])
     {
-        $options = [
+        $options = $options + [
             'host' => '127.0.0.1',
             'port' => 11211,
-        ] + $options;
+        ];
 
         $this->connection = new \Memcached();
         $this->connection->addServer($options['host'], $options['port']);

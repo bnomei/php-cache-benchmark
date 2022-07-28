@@ -9,7 +9,7 @@ use Bnomei\Driver\Redis;
 
 class CacheBenchmark
 {
-    public static function benchmark(Driver $driver): array
+    public static function benchmark(Driver $driver, array $options = []): array
     {
         $results = [];
         $duration = 0;
@@ -23,6 +23,7 @@ class CacheBenchmark
             $duration += $time;
         }
         $results['duration'] = $duration;
+        $results['options'] = $options;
 
         return $results;
     }
@@ -42,17 +43,17 @@ class CacheBenchmark
 
     public static function apcu(array $options = []): array
     {
-        return ['apcu' => self::benchmark(new Apcu())];
+        return ['apcu' => self::benchmark(new Apcu(), $options)];
     }
 
     public static function memcached(array $options = []): array
     {
-        return ['memcached' => self::benchmark(new Memcached($options))];
+        return ['memcached' => self::benchmark(new Memcached($options), $options)];
     }
 
     public static function redis(array $options = []): array
     {
-        return ['redis' => self::benchmark(new Redis($options))];
+        return ['redis' => self::benchmark(new Redis($options), $options)];
     }
 
     public static function testSet(Driver $driver)
