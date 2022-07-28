@@ -1,0 +1,22 @@
+# OS files
+.DS_Store
+.idea
+*.cache
+
+/tests/kirby
+/tests/logs
+/tests/media
+/tests/content/*
+!/tests/content/site.txt
+!/tests/content/home
+/tests/content/home/_drafts
+!/tests/content/home/home.txt
+/tests/site/accounts
+/tests/site/cache
+/tests/site/sessions
+/tests/site/plugins/kirby3-apcu-cachedriver
+/tests/site/plugins/kirby3-redis-cachedriver
+
+# files of Composer dependencies that are not needed for the plugin
+/vendor/
+coverage.xml
