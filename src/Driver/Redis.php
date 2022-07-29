@@ -9,11 +9,6 @@ class Redis implements Driver {
 
     public function __construct(array $options = [])
     {
-        $options = $options + [
-            'host' => '127.0.0.1',
-            'port' => 6379,
-        ];
-
         $this->connection = new \Predis\Client($options);
         $this->method = $this->connection;
     }

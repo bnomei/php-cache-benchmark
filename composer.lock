@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aeaa592f2ad4b8ace05928465b1ad0d9",
+    "content-hash": "f9fbfca8f8725c65e2f25825d63c5a1d",
     "packages": [
         {
             "name": "predis/predis",

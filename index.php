@@ -2,9 +2,12 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-//var_dump(\Bnomei\CacheBenchmark::all());
-var_dump(\Bnomei\CacheBenchmark::apcu());
-//var_dump(\Bnomei\CacheBenchmark::memcached());
-//var_dump(\Bnomei\CacheBenchmark::redis());
+\Bnomei\CacheBenchmark::$ITERATIONS = 10000; // default
+
+// echo json_encode(\Bnomei\CacheBenchmark::all(), JSON_PRETTY_PRINT);
+// echo json_encode(\Bnomei\CacheBenchmark::apcu(), JSON_PRETTY_PRINT);
+// echo json_encode(\Bnomei\CacheBenchmark::memcached(), JSON_PRETTY_PRINT);
+echo json_encode(\Bnomei\CacheBenchmark::memory(), JSON_PRETTY_PRINT);
+// echo json_encode(\Bnomei\CacheBenchmark::redis(), JSON_PRETTY_PRINT);
 ?>
 </pre>
