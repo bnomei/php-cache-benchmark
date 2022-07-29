@@ -43,8 +43,10 @@ class CacheBenchmark
             self::memory() +
             self::redis();
 
-        usort($results, function($a, $b) {
-            return $a['duration'] < $b['duration'];
+        uasort($results, function($a, $b) {
+            if($a['total_duration'] > $b['total_duration']) return 1;
+            if($a['total_duration'] < $b['total_duration']) return -1;
+            return 0;
         });
 
         return $results;
