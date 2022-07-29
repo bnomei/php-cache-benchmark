@@ -8,7 +8,7 @@ use Bnomei\Driver\Memcached;
 use Bnomei\Driver\Memory;
 use Bnomei\Driver\Redis;
 
-class CacheBenchmark
+class Benchmark
 {
     public static $ITERATIONS = 10000;
 
